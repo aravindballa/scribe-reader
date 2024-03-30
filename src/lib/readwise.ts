@@ -32,6 +32,10 @@ const fetchDocumentListApi = async (
   location: ReadwiseLocation = null,
   tags = 'scribe'
 ) => {
+  if (!token) {
+    throw new Error('No Readwise token provided');
+  }
+
   let fullData = [];
   let nextPageCursor = null;
 
