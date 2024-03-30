@@ -4,7 +4,7 @@ const MAX_DOCUMENTS = 10;
 
 type ReadwiseLocation = 'new' | 'later' | 'shortlist' | 'archive' | 'feed' | null;
 
-type ReadwiseDocument = {
+export type ReadwiseDocument = {
   id: string;
   url: string;
   title: string;
@@ -32,9 +32,7 @@ const fetchDocumentListApi = async (
   location: ReadwiseLocation = null,
   tags = 'scribe'
 ) => {
-  if (!token) {
-    throw new Error('No Readwise token provided');
-  }
+  console.log('token', token);
 
   let fullData = [];
   let nextPageCursor = null;

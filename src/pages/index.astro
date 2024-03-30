@@ -1,9 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import fetchDocumentListApi from '../lib/readwise';
+import fetchDocumentListApi, { type ReadwiseDocument } from '../lib/readwise';
 
 const fromDate = new Date('2024-03-01').toISOString(); // March 1, 2024
-const docs = await fetchDocumentListApi(fromDate, 'new');
+
+let docs: ReadwiseDocument[] = [];
+
+try {
+  docs = await fetchDocumentListApi(fromDate, 'new');
+} catch (error) {
+  console.error(error);
+}
 ---
 
 <Layout title="Home | Scribe Reader">
