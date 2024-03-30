@@ -5,9 +5,10 @@ import fetchDocumentListApi, { type ReadwiseDocument } from '../lib/readwise';
 const fromDate = new Date('2024-03-01').toISOString(); // March 1, 2024
 
 let docs: ReadwiseDocument[] = [];
+const env = 'runtime' in Astro.locals ? (Astro.locals.runtime as { env: Record<string, string> }).env : import.meta.env;
 
 try {
-  docs = await fetchDocumentListApi(Astro.locals.runtime, fromDate, 'new');
+  docs = await fetchDocumentListApi(env, fromDate, 'new');
 } catch (error) {
   console.error(error);
 }
