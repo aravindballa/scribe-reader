@@ -1,5 +1,3 @@
-const token = import.meta.env.READWISE_TOKEN || 'NO_TOKEN_PROVIDED';
-
 const MAX_DOCUMENTS = 10;
 
 type ReadwiseLocation = 'new' | 'later' | 'shortlist' | 'archive' | 'feed' | null;
@@ -28,10 +26,12 @@ export type ReadwiseDocument = {
 };
 
 const fetchDocumentListApi = async (
+  env: Record<string, string>,
   updatedAfter: string | null = null,
   location: ReadwiseLocation = null,
   tags = 'scribe'
 ) => {
+  const token = env ? env['READWISE_TOKEN'] : import.meta.env.READWISE_TOKEN;
   console.log('token', token);
 
   let fullData = [];

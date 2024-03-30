@@ -1,9 +1,13 @@
 /// <reference types="astro/client" />
 
-interface ImportMetaEnv {
-  readonly READWISE_TOKEN: string;
-}
+type ENV = {
+  READWISE_TOKEN: string;
+};
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
+// Depending on your adapter mode
+// use `AdvancedRuntime<ENV>` for advance runtime mode
+// use `DirectoryRuntime<ENV>` for directory runtime mode
+type Runtime = import('@astrojs/cloudflare').AdvancedRuntime<ENV>;
+declare namespace App {
+  interface Locals extends Runtime {}
 }

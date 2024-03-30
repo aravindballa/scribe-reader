@@ -7,7 +7,7 @@ const fromDate = new Date('2024-03-01').toISOString(); // March 1, 2024
 let docs: ReadwiseDocument[] = [];
 
 try {
-  docs = await fetchDocumentListApi(fromDate, 'new');
+  docs = await fetchDocumentListApi(Astro.locals.runtime, fromDate, 'new');
 } catch (error) {
   console.error(error);
 }
@@ -19,7 +19,7 @@ try {
     {
       docs.map(doc => (
         <article class="my-8 flex gap-4">
-          <img src={doc.image_url} alt={`${doc.title} cover`} height="100" width="100" class="rounded" />
+          <img src={doc.image_url} alt={`${doc.title} cover`} height="100" width="100" class="rounded h-24 w-24" />
           <div class="flex-1">
             <a href={`https://readwise.io/reader/shared/${doc.id}`}>
               <h2 class="">
