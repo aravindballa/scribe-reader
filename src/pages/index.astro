@@ -18,8 +18,8 @@ try {
   <main class="w-full max-w-[70ch] mx-auto my-16">
     {
       docs.map(doc => (
-        <article class="my-8 flex gap-4">
-          <img src={doc.image_url} alt={`${doc.title} cover`} height="100" width="100" class="rounded h-24 w-24" />
+        <article class="my-8 flex">
+          {/* <img src={doc.image_url} alt={`${doc.title} cover`} height="100" width="100" class="rounded h-24 w-24 mr-4" /> */}
           <div class="flex-1">
             <a href={`https://readwise.io/reader/shared/${doc.id}`}>
               <h2 class="">
